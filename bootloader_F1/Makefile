@@ -6,7 +6,7 @@ VECTOR_TABLE_OFFSET = 0x0000
 
 C_SRCS = Src/main.c Src/usb.c Src/hid.c Src/led.c Src/flash.c
 
-DEVICE_C_SRCS += CMSIS/Device/ST/STM32F10x/Source/Templates/system_stm32f10x.c
+DEVICE_C_SRCS += CMSIS/Device/ST/STM32F1xx/Source/Templates/system_stm32f1xx.c
 
 # Be silent per default, but 'make V=1' will show all compiler calls.
 # If you're insane, V=99 will print out all sorts of things.
@@ -17,7 +17,7 @@ NULL	:= 2>/dev/null
 endif
 
 INCLUDE_DIRS += -I Inc
-INCLUDE_DIRS += -I CMSIS/Device/ST/STM32F10x/Include 
+INCLUDE_DIRS += -I CMSIS/Device/ST/STM32F1xx/Include 
 INCLUDE_DIRS += -I CMSIS/Include
 
 C_SRCS += $(DEVICE_C_SRCS)

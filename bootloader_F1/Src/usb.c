@@ -21,12 +21,12 @@
 *
 */
 
-#include <stm32f10x.h>
+#include <stm32f1xx.h>
 #include <stdlib.h>
 
 #include "usb.h"
 
-#define CNTR_MASK	(CNTR_RESETM | CNTR_SUSPM | CNTR_WKUPM)
+#define CNTR_MASK	(CNTR_CTRM | CNTR_RESETM | CNTR_SUSPM | CNTR_WKUPM)
 #define ISTR_MASK	(ISTR_CTR | ISTR_RESET | ISTR_SUSP | ISTR_WKUP)
 
 USB_RxTxBuf_t RxTxBuffer[MAX_EP_NUM];
