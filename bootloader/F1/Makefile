@@ -28,9 +28,9 @@ SRCS += $(C_SRCS)
 vpath %.c $(sort $(dir $(C_SRCS)))
 OBJS = $(addprefix $(BUILD_DIR)/,$(notdir $(C_SRCS:.c=.o)))
 
-CFLAGS += -mcpu=cortex-m3 -mthumb -Wall -Os
+CFLAGS += -mcpu=cortex-m3 -mthumb -Wall -Os 
 CFLAGS += -std=gnu99
-CFLAGS += -fno-common -static
+CFLAGS += -fno-common -static -flto 
 CFLAGS += -specs=nano.specs -specs=nosys.specs
 CFLAGS += -Wextra -Wshadow -Wno-unused-variable -Wimplicit-function-declaration
 CFLAGS += -Wredundant-decls -Wstrict-prototypes -Wmissing-prototypes
@@ -64,7 +64,7 @@ RM = rm
 RMDIR = rmdir
 
 BUILD_DIR = build
-BIN_DIR = bootloader_only_binaries
+BIN_DIR = bin
 
 program: $(BUILD_DIR)/$(TARGET).hex
 	$(FLASH) write $(BUILD_DIR)/$(TARGET).bin 0x8000000

@@ -25,7 +25,7 @@
 *
 */
 
-#include <stm32f10x.h>
+#include <stm32f1xx.h>
 #include <stdbool.h>
 #include "usb.h"
 #include "config.h"
@@ -58,16 +58,6 @@ typedef void (*funct_ptr)(void);
 
 /* The bootloader entry point function prototype */
 void Reset_Handler(void);
-
-/* Minimal initial Flash-based vector table */
-uint32_t *VectorTable[] __attribute__((section(".isr_vector"))) = {
-
-	/* Initial stack pointer (MSP) */
-	(uint32_t *) SRAM_END,
-
-	/* Initial program counter (PC): Reset handler */
-	(uint32_t *) Reset_Handler
-};
 
 static void delay(uint32_t timeout)
 {
@@ -166,7 +156,7 @@ static void set_sysclock_to_72_mhz(void)
 		/*  PLL configuration: PLLCLK = HSE * 9 = 72 MHz */
 		RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_PLLSRC | RCC_CFGR_PLLXTPRE |
 											RCC_CFGR_PLLMULL));
-		RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_HSE | RCC_CFGR_PLLMULL9);
+		RCC->CFGR |= (uint32_t)(RCC_CFGR_PLLSRC_Msk | RCC_CFGR_PLLMULL9);
 
 		/* Enable PLL */
 		RCC->CR |= RCC_CR_PLLON;

@@ -21,7 +21,7 @@
 *
 */
 
-#include <stm32f10x.h>
+#include <stm32f1xx.h>
 #include <stdlib.h>
 #include <stdbool.h>
 

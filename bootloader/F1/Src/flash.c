@@ -19,7 +19,7 @@
 *	by Michel Stempin <michel.stempin@wanadoo.fr>
 */
 
-#include <stm32f10x.h>
+#include <stm32f1xx.h>
 #include "flash.h"
 
 void FLASH_WritePage(uint16_t *page, uint16_t *data, uint16_t size)
